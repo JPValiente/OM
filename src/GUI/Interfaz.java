@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author jpmazate
+ * 
  */
 public class Interfaz extends javax.swing.JFrame {
     
@@ -111,6 +112,7 @@ public class Interfaz extends javax.swing.JFrame {
     public void operarComandos(Estructura estructura) throws InterruptedException {
         estructura.asignarArea(areaResultados);
         estructura.mandarDatos();
+        //viendo si esta bien el push
         
     }
     
