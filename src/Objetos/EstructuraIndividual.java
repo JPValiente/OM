@@ -46,15 +46,30 @@ public class EstructuraIndividual implements Estructura {
         String cadena = "";
         for (int i = 0; i < lista.size(); i++) {
             if (i == 0) {
-                cadena = "<" + lista.get(i).getMotor() + "," + lista.get(i).getDistancia() + "," + lista.get(i).getVelocidadMotor() + ">";
+                cadena = "<" + convertirMotor(lista.get(i).getMotor()) + "," + lista.get(i).getDistancia() + "," + lista.get(i).getTipoMovimiento()+","+lista.get(i).getVelocidadMotor() +"," +lista.get(i).getSentido()+">";
             } else {
-                cadena = cadena + "<" + lista.get(i).getMotor() + "," + lista.get(i).getDistancia() + "," + lista.get(i).getVelocidadMotor() + ">";
+                cadena = cadena + "<" + convertirMotor(lista.get(i).getMotor()) + "," + lista.get(i).getDistancia() + "," + lista.get(i).getTipoMovimiento()+","+lista.get(i).getVelocidadMotor() +"," +lista.get(i).getSentido()+">";
             }
         }
         System.out.println(cadena);
         area.append(cadena + "\n");
-        //ComunicarArduino.mandarCadena(cadena);
+        ComunicarArduino.mandarCadena(cadena);
 
+    }
+    
+    public String convertirMotor(String motor){
+        switch (motor) {
+            case "a":
+                return "1";
+            case "b":
+                return "2";
+            case "c":
+                return "3";
+            case "d":
+                return "4";
+            default:
+                return "";
+        }
     }
 
     public boolean validarInfo() {
@@ -86,19 +101,19 @@ public class EstructuraIndividual implements Estructura {
 
         MoverMotor motor;
         if (!a) {
-            motor = new MoverMotor("a", 0, 0);
+            motor = new MoverMotor("a", 0, 0,"C",0);
             lista.add(motor);
         }
         if (!b) {
-            motor = new MoverMotor("b", 0, 0);
+            motor = new MoverMotor("b", 0, 0,"C",0);
             lista.add(motor);
         }
         if (!c) {
-            motor = new MoverMotor("c", 0, 0);
+            motor = new MoverMotor("c", 0, 0,"C",0);
             lista.add(motor);
         }
         if (!d) {
-            motor = new MoverMotor("d", 0, 0);
+            motor = new MoverMotor("d", 0, 0,"C",0);
             lista.add(motor);
                         
         }

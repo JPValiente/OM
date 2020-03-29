@@ -17,20 +17,22 @@ import java_cup.runtime.XMLElement;
 
 
 parser code {:
-
+	JTextArea areaError;
 	private Estructura estructura;
 	
 	public Estructura getEstructura(){
 		return 	estructura;	
 	}
-    public parser(Lexer lex) {
+    public parser(Lexer lex, JTextArea area) {
         super(lex);
+	this.areaError = area;
     }
 
 
 
   public void syntax_error(Symbol cur_token) {
-        System.out.println("OCURRIO UN ERROR SINTACTICO, FILA: " + cur_token.left + ", COLUMNA: " +cur_token.right + " TOKEN:" +cur_token.value);
+        System.out.println("No es correcto el orden de la palabra: " +cur_token.value+ " FILA: " + cur_token.left + ", COLUMNA: " +cur_token.right  );
+	areaError.append("No es correcto el orden de la palabra: " +cur_token.value+ " , fila: " + cur_token.left + ", columna: " +cur_token.right  );
     }    
 	
 :}
@@ -40,6 +42,10 @@ parser code {:
 
 terminal Object MOVERA,MOVERB,MOVERC,MOVERD,INI,FIN,INITRAYECTO,FINTRAYECTO,NUMEROS,PAR_ABIERTO,PAR_CERRADO,COMA;
 terminal Object MOVERADELANTE,MOVERATRAS,MOVERDERECHA,MOVERIZQUIERDA,MOVERARRIBADERECHA,MOVERARRIBAIZQUIERDA,MOVERABAJODERECHA,MOVERABAJOIZQUIERDA,GIRARIZQUIERDA,GIRARDERECHA;
+terminal Object ADELANTE,ATRAS,MILI,CM,GRADOS;
+
+
+
 
 non terminal Object global;
 non terminal Estructura empezar;
@@ -53,8 +59,8 @@ non terminal MoverMotor moverA,moverB,moverC,moverD;
 non terminal MoverPrimario moverAdelante,moverAtras,moverDerecha,moverIzquierda,moverArribaDerecha,moverArribaIzquierda ,moverAbajoDerecha,moverAbajoIzquierda,girarDerecha,girarIzquierda;
 
 non terminal List<MoverMotor> estructura,estructuras;
-
-
+non terminal String tipoMovimiento,tipoMovimientoSinGrados;
+non terminal Integer sentido;
 
 
 start with global;
@@ -160,22 +166,37 @@ lista.add(e);
 RESULT = lista;:};
 
 
-moverA ::= MOVERA PAR_ABIERTO NUMEROS:e1 COMA  NUMEROS:e2 PAR_CERRADO {:RESULT = new MoverMotor("a",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));:};
-moverB ::= MOVERB PAR_ABIERTO NUMEROS:e1 COMA  NUMEROS:e2 PAR_CERRADO {:RESULT = new MoverMotor("b",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));:};
-moverC ::= MOVERC PAR_ABIERTO NUMEROS:e1 COMA  NUMEROS:e2 PAR_CERRADO {:RESULT = new MoverMotor("c",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));:};
-moverD ::= MOVERD PAR_ABIERTO NUMEROS:e1 COMA  NUMEROS:e2 PAR_CERRADO {:RESULT = new MoverMotor("d",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));:};
+moverA ::= MOVERA PAR_ABIERTO NUMEROS:e1 COMA tipoMovimiento:e3 COMA NUMEROS:e2  COMA sentido:e4 PAR_CERRADO {:RESULT = new MoverMotor("a",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);:};
+moverB ::= MOVERB PAR_ABIERTO NUMEROS:e1 COMA tipoMovimiento:e3 COMA NUMEROS:e2  COMA sentido:e4 PAR_CERRADO {:RESULT = new MoverMotor("b",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);:};
+moverC ::= MOVERC PAR_ABIERTO NUMEROS:e1 COMA tipoMovimiento:e3 COMA NUMEROS:e2  COMA sentido:e4 PAR_CERRADO {:RESULT = new MoverMotor("c",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);:};
+moverD ::= MOVERD PAR_ABIERTO NUMEROS:e1 COMA tipoMovimiento:e3 COMA NUMEROS:e2  COMA sentido:e4 PAR_CERRADO {:RESULT = new MoverMotor("d",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);:};
 
 
-moverAdelante ::= MOVERADELANTE PAR_ABIERTO NUMEROS:e PAR_CERRADO  {:RESULT = new MoverPrimario("adelante", Integer.parseInt(e.toString()));:};
-moverAtras ::= MOVERATRAS PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("atras", Integer.parseInt(e.toString()));:};
-moverDerecha ::= MOVERDERECHA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("derecha", Integer.parseInt(e.toString()));:};
-moverIzquierda ::= MOVERIZQUIERDA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("izquierda", Integer.parseInt(e.toString()));:};
-moverArribaDerecha ::= MOVERARRIBADERECHA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("arribaDerecha", Integer.parseInt(e.toString()));:};
-moverArribaIzquierda ::= MOVERARRIBAIZQUIERDA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("arribaIzquierda", Integer.parseInt(e.toString()));:};
-moverAbajoDerecha ::= MOVERABAJODERECHA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("abajoDerecha", Integer.parseInt(e.toString()));:};
-moverAbajoIzquierda ::= MOVERABAJOIZQUIERDA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("abajoIzquierda", Integer.parseInt(e.toString()));:};
-girarDerecha ::= GIRARDERECHA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("girarDerecha", Integer.parseInt(e.toString()));:};
-girarIzquierda ::= GIRARIZQUIERDA PAR_ABIERTO NUMEROS:e PAR_CERRADO {:RESULT = new MoverPrimario("girarIzquierda", Integer.parseInt(e.toString()));:};
+tipoMovimiento ::= MILI:e {:RESULT = "M";:} | CM:e {:RESULT = "C";:}| GRADOS:e {:RESULT = "G";:};
+
+sentido ::= ADELANTE:e {:RESULT = 1;:} | ATRAS:e {:RESULT = 2;:};
+
+tipoMovimientoSinGrados ::= MILI:e {:RESULT = "M";:} | CM:e {:RESULT = "C";:};
+
+moverAdelante ::= MOVERADELANTE PAR_ABIERTO NUMEROS:e COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO  {:RESULT = new MoverPrimario("adelante", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverAtras ::= MOVERATRAS PAR_ABIERTO NUMEROS:e COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("atras", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverDerecha ::= MOVERDERECHA PAR_ABIERTO NUMEROS:e COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("derecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverIzquierda ::= MOVERIZQUIERDA PAR_ABIERTO NUMEROS:e COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("izquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverArribaDerecha ::= MOVERARRIBADERECHA PAR_ABIERTO NUMEROS:e  COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("arribaDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverArribaIzquierda ::= MOVERARRIBAIZQUIERDA PAR_ABIERTO NUMEROS:e  COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("arribaIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverAbajoDerecha ::= MOVERABAJODERECHA PAR_ABIERTO NUMEROS:e  COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3  PAR_CERRADO {:RESULT = new MoverPrimario("abajoDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+moverAbajoIzquierda ::= MOVERABAJOIZQUIERDA PAR_ABIERTO NUMEROS:e COMA tipoMovimientoSinGrados:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("abajoIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+girarDerecha ::= GIRARDERECHA PAR_ABIERTO NUMEROS:e COMA tipoMovimiento:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("girarDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
+
+girarIzquierda ::= GIRARIZQUIERDA PAR_ABIERTO NUMEROS:e COMA tipoMovimiento:e2 COMA NUMEROS:e3 PAR_CERRADO {:RESULT = new MoverPrimario("girarIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));:};
 
 
 

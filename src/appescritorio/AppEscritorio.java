@@ -23,20 +23,20 @@ public class AppEscritorio {
      */
     public static void main(String[] args) {
         
-        
-        try{
-            String a = "initrayectoini moverArribaDerecha(300) fin ini moverDerecha(100) fin fintrayecto";
-           // a = "ini moverDerecha(100) fin";
-        StringReader r = new StringReader(a);
-        Lexer lex = new Lexer(r);
-        parser par = new parser(lex);
-        par.parse();
-            Estructura estructura = par.getEstructura();
-            estructura.mandarDatos();
-            
-        }catch(Exception e){
-        }
-        
+//        
+//        try{
+//            String a = "initrayectoini moverArribaDerecha(300) fin ini moverDerecha(100) fin fintrayecto";
+//           // a = "ini moverDerecha(100) fin";
+//        StringReader r = new StringReader(a);
+//        Lexer lex = new Lexer(r);
+//        parser par = new parser(lex);
+//        par.parse();
+//            Estructura estructura = par.getEstructura();
+//            estructura.mandarDatos();
+//            
+//        }catch(Exception e){
+//        }
+//        
         Interfaz l = new Interfaz();
         l.setVisible(true);
     }

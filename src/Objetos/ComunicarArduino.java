@@ -19,6 +19,7 @@ public class ComunicarArduino {
 
     public static PanamaHitek_Arduino arduino;
     public static boolean conectado = false;
+    public static String puerto = "COM6";
 
     public static PanamaHitek_Arduino getInstance() {
 

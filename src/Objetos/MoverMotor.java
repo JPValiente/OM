@@ -16,12 +16,23 @@ public class MoverMotor {
     private String motor;
     private int distancia;
     private int velocidadMotor;
+    private String tipoMovimiento;
+    private int sentido;
     private JTextArea area;
 
-    public MoverMotor(String motor, int distancia, int velocidadMotor) {
+    public MoverMotor(String motor, int distancia, int velocidadMotor, String tipoMovimiento, int sentido) {
+        if(velocidadMotor>3){
+            velocidadMotor = 3;
+        }else if(velocidadMotor<0){
+            velocidadMotor = 1;
+        }
+        
         this.motor = motor;
         this.distancia = distancia;
         this.velocidadMotor = velocidadMotor;
+        this.tipoMovimiento = tipoMovimiento;
+        this.sentido = sentido;
+        
     }
     
     
@@ -53,6 +64,30 @@ public class MoverMotor {
     
     
     public void asignarArea(JTextArea area){
+        this.area = area;
+    }
+
+    public String getTipoMovimiento() {
+        return tipoMovimiento;
+    }
+
+    public void setTipoMovimiento(String tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
+
+    public int getSentido() {
+        return sentido;
+    }
+
+    public void setSentido(int sentido) {
+        this.sentido = sentido;
+    }
+
+    public JTextArea getArea() {
+        return area;
+    }
+
+    public void setArea(JTextArea area) {
         this.area = area;
     }
     
