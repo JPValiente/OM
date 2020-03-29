@@ -24,9 +24,11 @@ import javax.swing.JOptionPane;
 public class Interfaz extends javax.swing.JFrame {
     
     File file;
+        boolean arduinoConnected;
     
     public Interfaz() {
         initComponents();
+        arduinoConnected = true;
     }
     
     public void abrir() {
@@ -98,12 +100,16 @@ public class Interfaz extends javax.swing.JFrame {
     
     public void ejecutarInstrucciones() {
         try {
+            if(arduinoConnected){
             String texto = areaComandos.getText();
             StringReader reader = new StringReader(texto);
             Lexer lex = new Lexer(reader,this.areaResultados);
             parser parser = new parser(lex,this.areaResultados);
             parser.parse();
             operarComandos(parser.getEstructura());
+            }else{
+                JOptionPane.showMessageDialog(null, "NO ESTA CONECTADO EL ARDUINO, NO SE PUEDEN EJECUTAR INSTRUCCIONES");
+            }
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR AL INTENTAR EJECUTAR LOS COMANDOS");
@@ -123,7 +129,9 @@ public class Interfaz extends javax.swing.JFrame {
         ComunicarArduino.conectarArduino(puerto);
         if(ComunicarArduino.isConectado()){
             labelConectado.setText("STATUS: CONECTADO");
+            arduinoConnected = true;
         }else{
+            arduinoConnected = false;
             labelConectado.setText("STATUS: NO SE PUDO CONECTAR, VERIFICA EL PUERTO Y EL OM");
         }
         

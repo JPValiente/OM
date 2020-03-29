@@ -55,7 +55,7 @@ public class MoverPrimario {
     public void mandarCadena() {
         ComunicarArduino.getInstance();
         if (!ComunicarArduino.isConectado()) {
-            ComunicarArduino.conectarArduino("COM6");
+            ComunicarArduino.conectarArduino(ComunicarArduino.puerto);
             
         }
         String cadena = "";

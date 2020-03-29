@@ -39,7 +39,7 @@ public class EstructuraIndividual implements Estructura {
     public void convertirEnCadena() {
         ComunicarArduino.getInstance();
         if (!ComunicarArduino.isConectado()) {
-            ComunicarArduino.conectarArduino("puerto");
+            ComunicarArduino.conectarArduino(ComunicarArduino.puerto);
         }
         boolean bandera1 = validarInfo();
 
