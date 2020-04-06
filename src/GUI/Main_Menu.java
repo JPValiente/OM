@@ -1,5 +1,7 @@
 package GUI;
 
+import gui.ventanas.Principal;
+
 /**
  *
  * @author anclenius
@@ -35,7 +37,12 @@ public class Main_Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Pum");
+        jButton2.setText("Movimiento Libre");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Edición de Mapas");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +89,12 @@ public class Main_Menu extends javax.swing.JFrame {
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Principal p = new Principal();
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
