@@ -43,7 +43,7 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\056\000\002\002\004\000\002\002\003\000\002\003" +
+    "\000\065\000\002\002\004\000\002\002\003\000\002\003" +
     "\003\000\002\003\003\000\002\003\003\000\002\003\003" +
     "\000\002\011\005\000\002\006\005\000\002\007\005\000" +
     "\002\005\004\000\002\005\003\000\002\004\004\000\002" +
@@ -53,11 +53,13 @@ public class parser extends java_cup.runtime.lr_parser {
     "\002\013\003\000\002\013\003\000\002\013\003\000\002" +
     "\013\003\000\002\013\003\000\002\013\003\000\002\013" +
     "\003\000\002\013\003\000\002\013\003\000\002\013\003" +
-    "\000\002\014\010\000\002\015\010\000\002\016\010\000" +
-    "\002\017\010\000\002\020\006\000\002\021\006\000\002" +
-    "\022\006\000\002\023\006\000\002\024\006\000\002\025" +
-    "\006\000\002\026\006\000\002\027\006\000\002\030\006" +
-    "\000\002\031\006" });
+    "\000\002\014\014\000\002\015\014\000\002\016\014\000" +
+    "\002\017\014\000\002\034\003\000\002\034\003\000\002" +
+    "\034\003\000\002\036\003\000\002\036\003\000\002\035" +
+    "\003\000\002\035\003\000\002\020\012\000\002\021\012" +
+    "\000\002\022\012\000\002\023\012\000\002\024\012\000" +
+    "\002\025\012\000\002\026\012\000\002\027\012\000\002" +
+    "\030\012\000\002\031\012" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -65,13 +67,13 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\152\000\006\010\013\012\005\001\002\000\004\002" +
+    "\000\251\000\006\010\013\012\005\001\002\000\004\002" +
     "\ufffc\001\002\000\004\010\013\001\002\000\004\002\ufffd" +
-    "\001\002\000\004\002\uffff\001\002\000\004\002\142\001" +
+    "\001\002\000\004\002\uffff\001\002\000\004\002\241\001" +
     "\002\000\004\002\ufffe\001\002\000\004\002\000\001\002" +
-    "\000\036\004\032\005\031\006\027\007\026\020\025\021" +
+    "\000\036\004\032\005\031\006\027\007\025\020\026\021" +
     "\047\022\014\023\046\024\053\025\021\026\024\027\030" +
-    "\030\050\031\022\001\002\000\004\015\137\001\002\000" +
+    "\030\050\031\022\001\002\000\004\015\232\001\002\000" +
     "\030\011\uffec\020\uffec\021\uffec\022\uffec\023\uffec\024\uffec" +
     "\025\uffec\026\uffec\027\uffec\030\uffec\031\uffec\001\002\000" +
     "\030\011\uffe8\020\uffe8\021\uffe8\022\uffe8\023\uffe8\024\uffe8" +
@@ -80,88 +82,121 @@ public class parser extends java_cup.runtime.lr_parser {
     "\025\uffe2\026\uffe2\027\uffe2\030\uffe2\031\uffe2\001\002\000" +
     "\030\011\uffe5\020\uffe5\021\uffe5\022\uffe5\023\uffe5\024\uffe5" +
     "\025\uffe5\026\uffe5\027\uffe5\030\uffe5\031\uffe5\001\002\000" +
-    "\004\015\134\001\002\000\004\015\131\001\002\000\014" +
+    "\004\015\223\001\002\000\004\015\214\001\002\000\014" +
     "\004\ufff2\005\ufff2\006\ufff2\007\ufff2\011\ufff2\001\002\000" +
-    "\004\015\126\001\002\000\004\015\123\001\002\000\004" +
-    "\015\116\001\002\000\004\015\111\001\002\000\004\015" +
-    "\106\001\002\000\004\015\101\001\002\000\004\015\074" +
+    "\004\015\205\001\002\000\004\015\174\001\002\000\004" +
+    "\015\165\001\002\000\004\015\154\001\002\000\004\015" +
+    "\145\001\002\000\004\015\134\001\002\000\004\015\121" +
     "\001\002\000\030\011\uffe6\020\uffe6\021\uffe6\022\uffe6\023" +
     "\uffe6\024\uffe6\025\uffe6\026\uffe6\027\uffe6\030\uffe6\031\uffe6" +
-    "\001\002\000\030\011\uffe3\020\uffe3\021\uffe3\022\uffe3\023" +
-    "\uffe3\024\uffe3\025\uffe3\026\uffe3\027\uffe3\030\uffe3\031\uffe3" +
     "\001\002\000\030\011\uffe7\020\uffe7\021\uffe7\022\uffe7\023" +
     "\uffe7\024\uffe7\025\uffe7\026\uffe7\027\uffe7\030\uffe7\031\uffe7" +
+    "\001\002\000\030\011\uffe3\020\uffe3\021\uffe3\022\uffe3\023" +
+    "\uffe3\024\uffe3\025\uffe3\026\uffe3\027\uffe3\030\uffe3\031\uffe3" +
     "\001\002\000\030\011\uffe4\020\uffe4\021\uffe4\022\uffe4\023" +
     "\uffe4\024\uffe4\025\uffe4\026\uffe4\027\uffe4\030\uffe4\031\uffe4" +
     "\001\002\000\014\004\uffee\005\uffee\006\uffee\007\uffee\011" +
     "\uffee\001\002\000\014\004\uffef\005\uffef\006\uffef\007\uffef" +
     "\011\uffef\001\002\000\014\004\ufff0\005\ufff0\006\ufff0\007" +
-    "\ufff0\011\ufff0\001\002\000\030\011\073\020\025\021\047" +
+    "\ufff0\011\ufff0\001\002\000\030\011\120\020\026\021\047" +
     "\022\014\023\046\024\053\025\021\026\024\027\030\030" +
     "\050\031\022\001\002\000\030\011\uffeb\020\uffeb\021\uffeb" +
     "\022\uffeb\023\uffeb\024\uffeb\025\uffeb\026\uffeb\027\uffeb\030" +
     "\uffeb\031\uffeb\001\002\000\014\004\ufff1\005\ufff1\006\ufff1" +
     "\007\ufff1\011\ufff1\001\002\000\030\011\uffe9\020\uffe9\021" +
     "\uffe9\022\uffe9\023\uffe9\024\uffe9\025\uffe9\026\uffe9\027\uffe9" +
-    "\030\uffe9\031\uffe9\001\002\000\004\015\067\001\002\000" +
-    "\004\015\064\001\002\000\004\015\061\001\002\000\014" +
-    "\004\032\005\031\006\027\007\026\011\057\001\002\000" +
+    "\030\uffe9\031\uffe9\001\002\000\004\015\110\001\002\000" +
+    "\004\015\101\001\002\000\004\015\067\001\002\000\014" +
+    "\004\032\005\031\006\027\007\025\011\065\001\002\000" +
     "\030\011\uffea\020\uffea\021\uffea\022\uffea\023\uffea\024\uffea" +
     "\025\uffea\026\uffea\027\uffea\030\uffea\031\uffea\001\002\000" +
     "\004\015\054\001\002\000\004\014\055\001\002\000\004" +
-    "\016\056\001\002\000\030\011\uffd9\020\uffd9\021\uffd9\022" +
-    "\uffd9\023\uffd9\024\uffd9\025\uffd9\026\uffd9\027\uffd9\030\uffd9" +
-    "\031\uffd9\001\002\000\010\002\ufff4\010\ufff4\013\ufff4\001" +
-    "\002\000\014\004\ufff3\005\ufff3\006\ufff3\007\ufff3\011\ufff3" +
-    "\001\002\000\004\014\062\001\002\000\004\016\063\001" +
-    "\002\000\030\011\uffd4\020\uffd4\021\uffd4\022\uffd4\023\uffd4" +
-    "\024\uffd4\025\uffd4\026\uffd4\027\uffd4\030\uffd4\031\uffd4\001" +
-    "\002\000\004\014\065\001\002\000\004\016\066\001\002" +
-    "\000\030\011\uffdc\020\uffdc\021\uffdc\022\uffdc\023\uffdc\024" +
-    "\uffdc\025\uffdc\026\uffdc\027\uffdc\030\uffdc\031\uffdc\001\002" +
-    "\000\004\014\070\001\002\000\004\016\071\001\002\000" +
-    "\030\011\uffda\020\uffda\021\uffda\022\uffda\023\uffda\024\uffda" +
-    "\025\uffda\026\uffda\027\uffda\030\uffda\031\uffda\001\002\000" +
-    "\030\011\uffed\020\uffed\021\uffed\022\uffed\023\uffed\024\uffed" +
-    "\025\uffed\026\uffed\027\uffed\030\uffed\031\uffed\001\002\000" +
-    "\010\002\ufffb\010\ufffb\013\ufffb\001\002\000\004\014\075" +
-    "\001\002\000\004\017\076\001\002\000\004\014\077\001" +
-    "\002\000\004\016\100\001\002\000\014\004\uffe1\005\uffe1" +
-    "\006\uffe1\007\uffe1\011\uffe1\001\002\000\004\014\102\001" +
-    "\002\000\004\017\103\001\002\000\004\014\104\001\002" +
-    "\000\004\016\105\001\002\000\014\004\uffe0\005\uffe0\006" +
-    "\uffe0\007\uffe0\011\uffe0\001\002\000\004\014\107\001\002" +
-    "\000\004\016\110\001\002\000\030\011\uffd6\020\uffd6\021" +
-    "\uffd6\022\uffd6\023\uffd6\024\uffd6\025\uffd6\026\uffd6\027\uffd6" +
-    "\030\uffd6\031\uffd6\001\002\000\004\014\112\001\002\000" +
-    "\004\017\113\001\002\000\004\014\114\001\002\000\004" +
-    "\016\115\001\002\000\014\004\uffdf\005\uffdf\006\uffdf\007" +
-    "\uffdf\011\uffdf\001\002\000\004\014\117\001\002\000\004" +
-    "\017\120\001\002\000\004\014\121\001\002\000\004\016" +
-    "\122\001\002\000\014\004\uffde\005\uffde\006\uffde\007\uffde" +
-    "\011\uffde\001\002\000\004\014\124\001\002\000\004\016" +
-    "\125\001\002\000\030\011\uffdd\020\uffdd\021\uffdd\022\uffdd" +
-    "\023\uffdd\024\uffdd\025\uffdd\026\uffdd\027\uffdd\030\uffdd\031" +
-    "\uffdd\001\002\000\004\014\127\001\002\000\004\016\130" +
-    "\001\002\000\030\011\uffd7\020\uffd7\021\uffd7\022\uffd7\023" +
-    "\uffd7\024\uffd7\025\uffd7\026\uffd7\027\uffd7\030\uffd7\031\uffd7" +
-    "\001\002\000\004\014\132\001\002\000\004\016\133\001" +
-    "\002\000\030\011\uffd5\020\uffd5\021\uffd5\022\uffd5\023\uffd5" +
-    "\024\uffd5\025\uffd5\026\uffd5\027\uffd5\030\uffd5\031\uffd5\001" +
-    "\002\000\004\014\135\001\002\000\004\016\136\001\002" +
-    "\000\030\011\uffd8\020\uffd8\021\uffd8\022\uffd8\023\uffd8\024" +
-    "\uffd8\025\uffd8\026\uffd8\027\uffd8\030\uffd8\031\uffd8\001\002" +
-    "\000\004\014\140\001\002\000\004\016\141\001\002\000" +
-    "\030\011\uffdb\020\uffdb\021\uffdb\022\uffdb\023\uffdb\024\uffdb" +
-    "\025\uffdb\026\uffdb\027\uffdb\030\uffdb\031\uffdb\001\002\000" +
-    "\004\002\001\001\002\000\006\010\ufff7\013\ufff7\001\002" +
-    "\000\006\010\154\013\153\001\002\000\006\010\151\013" +
-    "\150\001\002\000\006\010\ufff5\013\ufff5\001\002\000\006" +
-    "\010\ufff8\013\ufff8\001\002\000\004\002\ufff9\001\002\000" +
-    "\026\020\025\021\047\022\014\023\046\024\053\025\021" +
-    "\026\024\027\030\030\050\031\022\001\002\000\006\010" +
-    "\ufff6\013\ufff6\001\002\000\004\002\ufffa\001\002\000\012" +
-    "\004\032\005\031\006\027\007\026\001\002" });
+    "\017\056\001\002\000\006\034\060\035\057\001\002\000" +
+    "\004\017\uffd7\001\002\000\004\017\uffd8\001\002\000\004" +
+    "\017\062\001\002\000\004\014\063\001\002\000\004\016" +
+    "\064\001\002\000\030\011\uffd2\020\uffd2\021\uffd2\022\uffd2" +
+    "\023\uffd2\024\uffd2\025\uffd2\026\uffd2\027\uffd2\030\uffd2\031" +
+    "\uffd2\001\002\000\010\002\ufff4\010\ufff4\013\ufff4\001\002" +
+    "\000\014\004\ufff3\005\ufff3\006\ufff3\007\ufff3\011\ufff3\001" +
+    "\002\000\004\014\070\001\002\000\004\017\071\001\002" +
+    "\000\010\034\074\035\072\036\075\001\002\000\004\017" +
+    "\uffdc\001\002\000\004\017\076\001\002\000\004\017\uffdd" +
+    "\001\002\000\004\017\uffdb\001\002\000\004\014\077\001" +
+    "\002\000\004\016\100\001\002\000\030\011\uffcd\020\uffcd" +
+    "\021\uffcd\022\uffcd\023\uffcd\024\uffcd\025\uffcd\026\uffcd\027" +
+    "\uffcd\030\uffcd\031\uffcd\001\002\000\004\014\102\001\002" +
+    "\000\004\017\103\001\002\000\006\034\060\035\057\001" +
+    "\002\000\004\017\105\001\002\000\004\014\106\001\002" +
+    "\000\004\016\107\001\002\000\030\011\uffd5\020\uffd5\021" +
+    "\uffd5\022\uffd5\023\uffd5\024\uffd5\025\uffd5\026\uffd5\027\uffd5" +
+    "\030\uffd5\031\uffd5\001\002\000\004\014\111\001\002\000" +
+    "\004\017\112\001\002\000\006\034\060\035\057\001\002" +
+    "\000\004\017\114\001\002\000\004\014\115\001\002\000" +
+    "\004\016\116\001\002\000\030\011\uffd3\020\uffd3\021\uffd3" +
+    "\022\uffd3\023\uffd3\024\uffd3\025\uffd3\026\uffd3\027\uffd3\030" +
+    "\uffd3\031\uffd3\001\002\000\030\011\uffed\020\uffed\021\uffed" +
+    "\022\uffed\023\uffed\024\uffed\025\uffed\026\uffed\027\uffed\030" +
+    "\uffed\031\uffed\001\002\000\010\002\ufffb\010\ufffb\013\ufffb" +
+    "\001\002\000\004\014\122\001\002\000\004\017\123\001" +
+    "\002\000\010\034\074\035\072\036\075\001\002\000\004" +
+    "\017\125\001\002\000\004\014\126\001\002\000\004\017" +
+    "\127\001\002\000\006\032\130\033\132\001\002\000\004" +
+    "\016\uffda\001\002\000\004\016\133\001\002\000\004\016" +
+    "\uffd9\001\002\000\014\004\uffe1\005\uffe1\006\uffe1\007\uffe1" +
+    "\011\uffe1\001\002\000\004\014\135\001\002\000\004\017" +
+    "\136\001\002\000\010\034\074\035\072\036\075\001\002" +
+    "\000\004\017\140\001\002\000\004\014\141\001\002\000" +
+    "\004\017\142\001\002\000\006\032\130\033\132\001\002" +
+    "\000\004\016\144\001\002\000\014\004\uffe0\005\uffe0\006" +
+    "\uffe0\007\uffe0\011\uffe0\001\002\000\004\014\146\001\002" +
+    "\000\004\017\147\001\002\000\006\034\060\035\057\001" +
+    "\002\000\004\017\151\001\002\000\004\014\152\001\002" +
+    "\000\004\016\153\001\002\000\030\011\uffcf\020\uffcf\021" +
+    "\uffcf\022\uffcf\023\uffcf\024\uffcf\025\uffcf\026\uffcf\027\uffcf" +
+    "\030\uffcf\031\uffcf\001\002\000\004\014\155\001\002\000" +
+    "\004\017\156\001\002\000\010\034\074\035\072\036\075" +
+    "\001\002\000\004\017\160\001\002\000\004\014\161\001" +
+    "\002\000\004\017\162\001\002\000\006\032\130\033\132" +
+    "\001\002\000\004\016\164\001\002\000\014\004\uffdf\005" +
+    "\uffdf\006\uffdf\007\uffdf\011\uffdf\001\002\000\004\014\166" +
+    "\001\002\000\004\017\167\001\002\000\006\034\060\035" +
+    "\057\001\002\000\004\017\171\001\002\000\004\014\172" +
+    "\001\002\000\004\016\173\001\002\000\030\011\uffd6\020" +
+    "\uffd6\021\uffd6\022\uffd6\023\uffd6\024\uffd6\025\uffd6\026\uffd6" +
+    "\027\uffd6\030\uffd6\031\uffd6\001\002\000\004\014\175\001" +
+    "\002\000\004\017\176\001\002\000\010\034\074\035\072" +
+    "\036\075\001\002\000\004\017\200\001\002\000\004\014" +
+    "\201\001\002\000\004\017\202\001\002\000\006\032\130" +
+    "\033\132\001\002\000\004\016\204\001\002\000\014\004" +
+    "\uffde\005\uffde\006\uffde\007\uffde\011\uffde\001\002\000\004" +
+    "\014\206\001\002\000\004\017\207\001\002\000\006\034" +
+    "\060\035\057\001\002\000\004\017\211\001\002\000\004" +
+    "\014\212\001\002\000\004\016\213\001\002\000\030\011" +
+    "\uffd0\020\uffd0\021\uffd0\022\uffd0\023\uffd0\024\uffd0\025\uffd0" +
+    "\026\uffd0\027\uffd0\030\uffd0\031\uffd0\001\002\000\004\014" +
+    "\215\001\002\000\004\017\216\001\002\000\010\034\074" +
+    "\035\072\036\075\001\002\000\004\017\220\001\002\000" +
+    "\004\014\221\001\002\000\004\016\222\001\002\000\030" +
+    "\011\uffce\020\uffce\021\uffce\022\uffce\023\uffce\024\uffce\025" +
+    "\uffce\026\uffce\027\uffce\030\uffce\031\uffce\001\002\000\004" +
+    "\014\224\001\002\000\004\017\225\001\002\000\006\034" +
+    "\060\035\057\001\002\000\004\017\227\001\002\000\004" +
+    "\014\230\001\002\000\004\016\231\001\002\000\030\011" +
+    "\uffd1\020\uffd1\021\uffd1\022\uffd1\023\uffd1\024\uffd1\025\uffd1" +
+    "\026\uffd1\027\uffd1\030\uffd1\031\uffd1\001\002\000\004\014" +
+    "\233\001\002\000\004\017\234\001\002\000\006\034\060" +
+    "\035\057\001\002\000\004\017\236\001\002\000\004\014" +
+    "\237\001\002\000\004\016\240\001\002\000\030\011\uffd4" +
+    "\020\uffd4\021\uffd4\022\uffd4\023\uffd4\024\uffd4\025\uffd4\026" +
+    "\uffd4\027\uffd4\030\uffd4\031\uffd4\001\002\000\004\002\001" +
+    "\001\002\000\006\010\ufff7\013\ufff7\001\002\000\006\010" +
+    "\253\013\252\001\002\000\006\010\250\013\247\001\002" +
+    "\000\006\010\ufff5\013\ufff5\001\002\000\006\010\ufff8\013" +
+    "\ufff8\001\002\000\004\002\ufff9\001\002\000\026\020\026" +
+    "\021\047\022\014\023\046\024\053\025\021\026\024\027" +
+    "\030\030\050\031\022\001\002\000\006\010\ufff6\013\ufff6" +
+    "\001\002\000\004\002\ufffa\001\002\000\012\004\032\005" +
+    "\031\006\027\007\025\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -169,13 +204,13 @@ public class parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\152\000\016\002\007\003\011\006\006\007\010\010" +
-    "\005\011\003\001\001\000\002\001\001\000\012\004\143" +
-    "\005\144\010\145\011\142\001\001\000\002\001\001\000" +
+    "\000\251\000\016\002\007\003\011\006\006\007\010\010" +
+    "\005\011\003\001\001\000\002\001\001\000\012\004\242" +
+    "\005\243\010\244\011\241\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\046\012\041\013\014\014\043\015\040\016" +
-    "\037\017\036\020\042\021\051\022\044\023\015\024\034" +
-    "\025\032\026\017\027\035\030\033\031\016\032\022\033" +
+    "\037\017\036\020\042\021\051\022\044\023\015\024\033" +
+    "\025\032\026\017\027\035\030\034\031\016\032\022\033" +
     "\050\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
@@ -183,35 +218,57 @@ public class parser extends java_cup.runtime.lr_parser {
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\030\013\071\020\042\021\051\022\044\023\015\024" +
-    "\034\025\032\026\017\027\035\030\033\031\016\001\001" +
+    "\000\030\013\116\020\042\021\051\022\044\023\015\024" +
+    "\033\025\032\026\017\027\035\030\034\031\016\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\014" +
-    "\014\043\015\040\016\037\017\036\032\057\001\001\000" +
+    "\014\043\015\040\016\037\017\036\032\065\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\035\060\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\034\072" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\004\035\103\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\035\112\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\034\123\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\036\130\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\034\136\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\036\142\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\035\147\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\034\156\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\036\162\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\035\167\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\034\176\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\036\202\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\035\207" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\000\004\034\216\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\035\225\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\035\234\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\010" +
-    "\151\001\001\000\004\011\146\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\032\012\041\013" +
-    "\014\020\042\021\051\022\044\023\015\024\034\025\032" +
-    "\026\017\027\035\030\033\031\016\001\001\000\002\001" +
-    "\001\000\002\001\001\000\016\014\043\015\040\016\037" +
-    "\017\036\032\022\033\050\001\001" });
+    "\004\010\250\001\001\000\004\011\245\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\032\012" +
+    "\041\013\014\020\042\021\051\022\044\023\015\024\033" +
+    "\025\032\026\017\027\035\030\034\031\016\001\001\000" +
+    "\002\001\001\000\002\001\001\000\016\014\043\015\040" +
+    "\016\037\017\036\032\022\033\050\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -250,20 +307,22 @@ public class parser extends java_cup.runtime.lr_parser {
 
 
 
-
+	JTextArea areaError;
 	private Estructura estructura;
 	
 	public Estructura getEstructura(){
 		return 	estructura;	
 	}
-    public parser(Lexer lex) {
+    public parser(Lexer lex, JTextArea area) {
         super(lex);
+	this.areaError = area;
     }
 
 
 
   public void syntax_error(Symbol cur_token) {
-        System.out.println("OCURRIO UN ERROR SINTACTICO, FILA: " + cur_token.left + ", COLUMNA: " +cur_token.right + " TOKEN:" +cur_token.value);
+        System.out.println("No es correcto el orden de la palabra: " +cur_token.value+ " FILA: " + cur_token.left + ", COLUMNA: " +cur_token.right  );
+	areaError.append("No es correcto el orden de la palabra: " +cur_token.value+ " , fila: " + cur_token.left + ", columna: " +cur_token.right  );
     }    
 	
 
@@ -750,182 +809,350 @@ RESULT = lista;
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // moverA ::= MOVERA PAR_ABIERTO NUMEROS COMA NUMEROS PAR_CERRADO 
+          case 32: // moverA ::= MOVERA PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS COMA sentido PAR_CERRADO 
             {
               MoverMotor RESULT =null;
-		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
-		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
-		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverMotor("a",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverA",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		String e3 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e4left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e4right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Integer e4 = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverMotor("a",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverA",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // moverB ::= MOVERB PAR_ABIERTO NUMEROS COMA NUMEROS PAR_CERRADO 
+          case 33: // moverB ::= MOVERB PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS COMA sentido PAR_CERRADO 
             {
               MoverMotor RESULT =null;
-		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
-		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
-		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverMotor("b",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverB",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		String e3 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e4left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e4right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Integer e4 = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverMotor("b",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverB",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 34: // moverC ::= MOVERC PAR_ABIERTO NUMEROS COMA NUMEROS PAR_CERRADO 
+          case 34: // moverC ::= MOVERC PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS COMA sentido PAR_CERRADO 
             {
               MoverMotor RESULT =null;
-		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
-		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
-		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverMotor("c",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverC",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		String e3 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e4left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e4right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Integer e4 = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverMotor("c",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverC",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // moverD ::= MOVERD PAR_ABIERTO NUMEROS COMA NUMEROS PAR_CERRADO 
+          case 35: // moverD ::= MOVERD PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS COMA sentido PAR_CERRADO 
             {
               MoverMotor RESULT =null;
-		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
-		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
-		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
-		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverMotor("d",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverD",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int e1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int e1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Object e1 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		String e3 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object e2 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e4left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e4right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Integer e4 = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverMotor("d",Integer.parseInt(e1.toString()), Integer.parseInt(e2.toString()),e3,e4);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverD",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // moverAdelante ::= MOVERADELANTE PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 36: // tipoMovimiento ::= MILI 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("adelante", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAdelante",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              String RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = "M";
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("tipoMovimiento",26, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 37: // moverAtras ::= MOVERATRAS PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 37: // tipoMovimiento ::= CM 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("atras", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAtras",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              String RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = "C";
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("tipoMovimiento",26, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 38: // moverDerecha ::= MOVERDERECHA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 38: // tipoMovimiento ::= GRADOS 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("derecha", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverDerecha",16, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              String RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = "G";
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("tipoMovimiento",26, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 39: // moverIzquierda ::= MOVERIZQUIERDA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 39: // sentido ::= ADELANTE 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("izquierda", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverIzquierda",17, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              Integer RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = 1;
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("sentido",28, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 40: // moverArribaDerecha ::= MOVERARRIBADERECHA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 40: // sentido ::= ATRAS 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("arribaDerecha", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverArribaDerecha",18, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              Integer RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = 2;
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("sentido",28, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 41: // moverArribaIzquierda ::= MOVERARRIBAIZQUIERDA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 41: // tipoMovimientoSinGrados ::= MILI 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("arribaIzquierda", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverArribaIzquierda",19, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              String RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = "M";
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("tipoMovimientoSinGrados",27, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 42: // moverAbajoDerecha ::= MOVERABAJODERECHA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 42: // tipoMovimientoSinGrados ::= CM 
             {
-              MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("abajoDerecha", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAbajoDerecha",20, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              String RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		RESULT = "C";
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("tipoMovimientoSinGrados",27, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 43: // moverAbajoIzquierda ::= MOVERABAJOIZQUIERDA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 43: // moverAdelante ::= MOVERADELANTE PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
             {
               MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("abajoIzquierda", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAbajoIzquierda",21, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("adelante", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAdelante",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 44: // girarDerecha ::= GIRARDERECHA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 44: // moverAtras ::= MOVERATRAS PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
             {
               MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("girarDerecha", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("girarDerecha",22, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("atras", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAtras",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 45: // girarIzquierda ::= GIRARIZQUIERDA PAR_ABIERTO NUMEROS PAR_CERRADO 
+          case 45: // moverDerecha ::= MOVERDERECHA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
             {
               MoverPrimario RESULT =null;
-		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
-		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		RESULT = new MoverPrimario("girarIzquierda", Integer.parseInt(e.toString()));
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("girarIzquierda",23, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("derecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverDerecha",16, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 46: // moverIzquierda ::= MOVERIZQUIERDA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("izquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverIzquierda",17, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 47: // moverArribaDerecha ::= MOVERARRIBADERECHA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("arribaDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverArribaDerecha",18, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 48: // moverArribaIzquierda ::= MOVERARRIBAIZQUIERDA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("arribaIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverArribaIzquierda",19, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 49: // moverAbajoDerecha ::= MOVERABAJODERECHA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("abajoDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAbajoDerecha",20, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 50: // moverAbajoIzquierda ::= MOVERABAJOIZQUIERDA PAR_ABIERTO NUMEROS COMA tipoMovimientoSinGrados COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("abajoIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("moverAbajoIzquierda",21, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 51: // girarDerecha ::= GIRARDERECHA PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("girarDerecha", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("girarDerecha",22, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 52: // girarIzquierda ::= GIRARIZQUIERDA PAR_ABIERTO NUMEROS COMA tipoMovimiento COMA NUMEROS PAR_CERRADO 
+            {
+              MoverPrimario RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		String e2 = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int e3left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int e3right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object e3 = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		RESULT = new MoverPrimario("girarIzquierda", Integer.parseInt(e.toString()),e2,Integer.parseInt(e3.toString()));
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("girarIzquierda",23, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 

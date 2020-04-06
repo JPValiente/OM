@@ -9,7 +9,11 @@ package Analizadores.Cup;
 public class sym {
   /* terminals */
   public static final int MOVERDERECHA = 16;
+  public static final int GRADOS = 28;
+  public static final int CM = 27;
+  public static final int MILI = 26;
   public static final int FINTRAYECTO = 9;
+  public static final int ATRAS = 25;
   public static final int MOVERARRIBAIZQUIERDA = 19;
   public static final int INI = 6;
   public static final int GIRARDERECHA = 23;
@@ -24,6 +28,7 @@ public class sym {
   public static final int MOVERA = 2;
   public static final int NUMEROS = 10;
   public static final int EOF = 0;
+  public static final int ADELANTE = 24;
   public static final int error = 1;
   public static final int MOVERIZQUIERDA = 17;
   public static final int MOVERATRAS = 15;
@@ -56,7 +61,12 @@ public class sym {
   "MOVERABAJODERECHA",
   "MOVERABAJOIZQUIERDA",
   "GIRARIZQUIERDA",
-  "GIRARDERECHA"
+  "GIRARDERECHA",
+  "ADELANTE",
+  "ATRAS",
+  "MILI",
+  "CM",
+  "GRADOS"
   };
 }
 
