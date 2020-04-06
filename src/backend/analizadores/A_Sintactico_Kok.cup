@@ -1,0 +1,120 @@
+/*--------------- 1ra Area: Codigo de Usuario -----------------------*/
+//-------> importaciones, paquetes
+package backend.analizadores;
+import backend.objetos.*;
+import java_cup.runtime.Symbol;
+import java.util.ArrayList;
+import java.lang.Math;
+
+//------> Codigo para el parser,variables, metodos
+parser code
+{:
+    public ManejadorKok manejador;
+    public ArrayList<String> listaRepeat = new ArrayList<>();
+    
+    public Analizador_Sintactico_Kok(Analizador_Lexico_Kok lex, ManejadorKok manejador) { 
+            super(lex);
+            this.manejador=manejador;
+    }
+
+    public String resultado="";
+
+    //Metodo al que se llama automaticamente ante algun error sintactico
+    public void syntax_error(Symbol s)
+    {        
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+        
+        System.out.println("¡ Error Sintactico Recuperado !");
+        System.out.println("\t\tLexema: "+lexema);
+        System.out.println("\t\tFila: "+fila);
+        System.out.println("\t\tColumna: "+columna);      
+    }
+
+    //Metodo al que se llama en el momento en que ya no es posible una recuperacion de errores
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {        
+        String lexema = s.value.toString();
+        int fila = s.right +1;
+        int columna = s.left +1;
+        
+        System.out.println("¡ Error Sintactico, Modo Panico ! ");
+        System.out.println("\t\t-- Lexema: "+lexema);
+        System.out.println("\t\t-- Fila: "+fila);
+        System.out.println("\t\t-- Columna: "+columna);
+
+        manejador.capturarMensajes("Lo siento amigo, no entiendo que quieres decir con: "+lexema);
+    }
+:}
+
+//------> Codigo para las acciones gramaticales
+action code
+{:
+:}
+
+/*--------------- 2da Area: Declaraciones -----------------------*/
+//------> Declaracion de terminales 
+terminal String ErrorLexico, Forward, Backward, Right, Left, Clears, ToCenter, PositionXY, PositionX, PositionY,
+                          Repeat, AbrirCorchetes, CerrarCorchetes, Coma, Igual, Mas, Menos, Diagonal, Asterisco,
+                         Comentario, Numero, AbrirParentesis, CerrarParentesis; 
+
+
+//------> Declaracion de no terminales
+non terminal String GENESIS, S1, ES1, R, C, A;
+
+//------> Precedencia de menor a mayor 
+precedence left Mas, Menos;
+precedence left Diagonal, Asterisco;
+
+start with GENESIS;
+
+/*--------------- 3ra Area: Reglas Semanticas -----------------------*/
+GENESIS::= S1:a {: System.out.println(" ------------------------ Lectura de documento KOK terminada.  ------------------------ "); :};
+
+
+S1::= Comentario
+          | ES1 Comentario
+          | ES1
+          
+;
+
+A::= A:a Mas A:b {: int val1 = Integer.parseInt(a);
+                            int val2 = Integer.parseInt(b);
+                            int r = val1 + val2;
+                            RESULT = String.valueOf(r); :}
+      | A:a Menos A:b {: int val1 = Integer.parseInt(a);
+                            int val2 = Integer.parseInt(b);
+                            int r = val1 - val2;
+                            RESULT = String.valueOf(r); :}
+      | A:a Diagonal A:b {: int val1 = Integer.parseInt(a);
+                            int val2 = Integer.parseInt(b);
+                            int r = val1 / val2;
+                            r = (int) (Math.round(r));
+                            RESULT = String.valueOf(r); :}
+      | A:a Asterisco A:b {: int val1 = Integer.parseInt(a);
+                            int val2 = Integer.parseInt(b);
+                            int r = val1 * val2;
+                            RESULT = String.valueOf(r); :}
+      | AbrirParentesis A:a {: RESULT = a; :} CerrarParentesis
+      | Numero:a {: RESULT = a; :}
+;
+
+ES1::= Repeat:rp A:num AbrirCorchetes:ac R:acciones CerrarCorchetes:cc {: parser.manejador.repeat(num, parser.listaRepeat); RESULT = rp+num+ac+acciones+cc;  :}
+           | Forward:fd A:r {: parser.manejador.forward(r); RESULT = fd+r; :}
+           | Backward:bk A:a {:parser.manejador.backward(a); RESULT = bk+a;  :}
+           | Right:r A:a {:parser.manejador.right(a); RESULT = r+a;:}
+           | Left:lf A:a {:parser.manejador.left(a); RESULT = lf+a; :}
+           | Clears:cl {:parser.manejador.clears(); RESULT = cl; :}
+           | ToCenter:tc {: parser.manejador.tocenter(); RESULT = tc; :} 
+           | PositionX:px A:x {: parser.manejador.positionX(x); RESULT = px+x; :}
+           | PositionY:py A:y {: parser.manejador.positionY(y); RESULT = py+y; :}
+           | PositionXY:pxy A:x Coma:c A:y {: parser.manejador.positionXY(x,y); RESULT = pxy+x+x+y; :}
+     
+;
+
+
+R::= ES1:a {: parser.listaRepeat.add(a); :}
+       | R ES1:a  {: parser.listaRepeat.add(a); :}
+;
+
