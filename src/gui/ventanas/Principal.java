@@ -406,7 +406,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             
-            tortuga1.loadimage("/home/richard/Documentos/SeptimoSemestre/TS2/MovimientoLibre/Tortuga1.png");
+            tortuga1.loadimage("./resources/carro.png");
             tortuga1.invalidate();
             manejador.dibujarCuadroInicial();
         } catch (IOException ex) {

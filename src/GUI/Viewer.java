@@ -6,6 +6,13 @@ import static GUI.Map_Editor.COLUMNS;
 import static GUI.Map_Editor.ROW;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -51,6 +58,7 @@ public class Viewer extends javax.swing.JFrame implements KeyListener {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Visor de mapa");
@@ -81,7 +89,16 @@ public class Viewer extends javax.swing.JFrame implements KeyListener {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Guardar");
+
+        jMenuItem2.setText("Guardar Log");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -121,6 +138,26 @@ public class Viewer extends javax.swing.JFrame implements KeyListener {
         
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        final JFileChooser fc = new JFileChooser();
+        int returnVal = fc.showSaveDialog(this); //parent component to JFileChooser
+        if (returnVal == JFileChooser.APPROVE_OPTION) { //OK button pressed by user
+                File file = fc.getSelectedFile(); //get File selected by user
+                
+                Date a = new Date();
+                String text = "Generated " + a.toString() + "\n" + this.jTextArea1.getText();
+                String path = file.getAbsolutePath();
+                if(!file.getAbsolutePath().contains(".txt")) path += ".txt";
+                
+                try (PrintWriter out = new PrintWriter(file.getAbsolutePath())) {
+                    out.println(text);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Error");
+                }
+                //your writing code goes here
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -129,6 +166,7 @@ public class Viewer extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
