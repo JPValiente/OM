@@ -47,6 +47,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
     public static boolean vel1=false,vel2=false,vel3=false;
 
     ArrayList<Point> listaPuntos = new ArrayList<>();
+    String log="";
 
      public JLabel getLabel1(){
         return carroLabel;
@@ -59,7 +60,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
-        manejador = new manejadorCarrito(this.editarKokTextArea, this.areaPrincipal, this.tortuga1);
+        manejador = new manejadorCarrito(this.editarTextArea, this.areaPrincipal, this.tortuga1);
         dibujo = this.getGraphics();
 
     }
@@ -69,7 +70,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        editarKokTextArea = new javax.swing.JTextArea();
+        editarTextArea = new javax.swing.JTextArea();
         MensajesServidorNoEditableLabel = new javax.swing.JLabel();
         ComandosKokNoEditableLabel = new javax.swing.JLabel();
         usuarioActualLabel = new javax.swing.JLabel();
@@ -94,6 +95,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
         edicionMenu = new javax.swing.JMenu();
         limpiarComandosMenuItem = new javax.swing.JMenuItem();
         resetearjMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movimiento LIbre Objeto Movil");
@@ -110,22 +112,22 @@ public class Principal extends javax.swing.JFrame implements Observer {
             }
         });
 
-        editarKokTextArea.setColumns(20);
-        editarKokTextArea.setRows(5);
-        editarKokTextArea.addCaretListener(new javax.swing.event.CaretListener() {
+        editarTextArea.setColumns(20);
+        editarTextArea.setRows(5);
+        editarTextArea.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                editarKokTextAreaCaretUpdate(evt);
+                editarTextAreaCaretUpdate(evt);
             }
         });
-        editarKokTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                editarKokTextAreaKeyTyped(evt);
-            }
+        editarTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                editarKokTextAreaKeyPressed(evt);
+                editarTextAreaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editarTextAreaKeyTyped(evt);
             }
         });
-        jScrollPane1.setViewportView(editarKokTextArea);
+        jScrollPane1.setViewportView(editarTextArea);
 
         ComandosKokNoEditableLabel.setText("Comandos");
 
@@ -296,6 +298,14 @@ public class Principal extends javax.swing.JFrame implements Observer {
         });
         edicionMenu.add(resetearjMenuItem);
 
+        jMenuItem1.setText("Guardar Log");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        edicionMenu.add(jMenuItem1);
+
         jMenuBar1.add(edicionMenu);
 
         setJMenuBar(jMenuBar1);
@@ -362,14 +372,14 @@ public class Principal extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void editarKokTextAreaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_editarKokTextAreaCaretUpdate
+    private void editarTextAreaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_editarTextAreaCaretUpdate
 
-    }//GEN-LAST:event_editarKokTextAreaCaretUpdate
+    }//GEN-LAST:event_editarTextAreaCaretUpdate
 
 
-    private void editarKokTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarKokTextAreaKeyTyped
+    private void editarTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarTextAreaKeyTyped
 
-    }//GEN-LAST:event_editarKokTextAreaKeyTyped
+    }//GEN-LAST:event_editarTextAreaKeyTyped
 
     private void abrirEditorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirEditorMenuItemActionPerformed
         Editor nuevoEditor = new Editor(this);
@@ -385,19 +395,55 @@ public class Principal extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_guardarComoMenuItemActionPerformed
 
     private void limpiarComandosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarComandosMenuItemActionPerformed
-        editarKokTextArea.setText("");
+        editarTextArea.setText("");
     }//GEN-LAST:event_limpiarComandosMenuItemActionPerformed
 
-    private void editarKokTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarKokTextAreaKeyPressed
+    private void editarTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editarTextAreaKeyPressed
         if ((evt.getKeyCode() == KeyEvent.VK_ENTER)) {
-            manejador.analizarTexto(obtenerUltimaLinea(editarKokTextArea.getText()));
+            manejador.analizarTexto(obtenerUltimaLinea(editarTextArea.getText()));
+            String[] datos = obtenerUltimaLinea(editarTextArea.getText()).split(" ");
+            
+            if (obtenerUltimaLinea(editarTextArea.getText()).contains("adelante")) {
+                if (vel1) {
+                    log += "moverAdelante(1,"+datos[1]+")\n";   
+                }else if(vel2){
+                     log += "moverAdelante(2,"+datos[1]+")\n";   
+                }else if (vel3) {
+                     log += "moverAdelante(3,"+datos[1]+")\n";   
+                }    
+            }else if (obtenerUltimaLinea(editarTextArea.getText()).contains("atras")) {
+                if (vel1) {
+                    log += "moverAtras(1,"+datos[1]+")\n";   
+                }else if(vel2){
+                     log += "moverAtras(2,"+datos[1]+")\n";   
+                }else if (vel3) {
+                     log += "moverAtras(3,"+datos[1]+")\n";   
+                }   
+            }else if (obtenerUltimaLinea(editarTextArea.getText()).contains("derecha")) {
+                if (vel1) {
+                    log += "girarDerecha(1,"+datos[1]+")\n";   
+                }else if(vel2){
+                     log += "girarDerecha(2,"+datos[1]+")\n";   
+                }else if (vel3) {
+                     log += "girarDerecha(3,"+datos[1]+")\n";   
+                } 
+            }else if (obtenerUltimaLinea(editarTextArea.getText()).contains("izquierda")) {
+                if (vel1) {
+                    log += "girarIzquierda(1,"+datos[1]+")\n";   
+                }else if(vel2){
+                     log += "girarIzquierda(2,"+datos[1]+")\n";   
+                }else if (vel3) {
+                     log += "girarIzquierda(3,"+datos[1]+")\n";   
+                } 
+            }
+           
         } else if (evt.getKeyCode() == 8) {
-            String texto = obtenerUltimaLinea(editarKokTextArea.getText());
+            String texto = obtenerUltimaLinea(editarTextArea.getText());
             if (texto.length() < 1) {
-                editarKokTextArea.setText(editarKokTextArea.getText() + " ");
+                editarTextArea.setText(editarTextArea.getText() + " ");
             }
         }
-    }//GEN-LAST:event_editarKokTextAreaKeyPressed
+    }//GEN-LAST:event_editarTextAreaKeyPressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
 
@@ -415,7 +461,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_formWindowOpened
 
     private void abrirYejecutarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirYejecutarMenuItemActionPerformed
-        if (editarKokTextArea.getText().equals("")) {         
+        if (editarTextArea.getText().equals("")) {         
             abrirArchivoYEjecutar();
         } else {
             int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -429,7 +475,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
 
     private void resetearjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetearjMenuItemActionPerformed
         manejador.resetear();
-        editarKokTextArea.setEditable(true);
+        editarTextArea.setEditable(true);
     }//GEN-LAST:event_resetearjMenuItemActionPerformed
 
     private void vel1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vel1ButtonActionPerformed
@@ -459,6 +505,14 @@ public class Principal extends javax.swing.JFrame implements Observer {
         hilo1.start();
     }//GEN-LAST:event_vel3ButtonActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            log();
+        } catch (IOException ex) {
+            System.out.println("error de log");
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     private String obtenerUltimaLinea(String textoEntrada) {
         int catENTER = 1;
         String textoSelect = "";
@@ -485,23 +539,23 @@ public class Principal extends javax.swing.JFrame implements Observer {
     }
 
     private void GuardarComo() {
-        String texto = editarKokTextArea.getText();//variable para comparacion
+        String texto = editarTextArea.getText();//variable para comparacion
         if (texto.matches("[[ ]*[\n]*[\t]]*")) {//compara si en el JTextArea hay texto sino muestrtra un mensaje en pantalla
-            JOptionPane.showMessageDialog(null, "¡No hay comandos Kok para guardar!", "Oops!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡No hay comandos para guardar!", "Oops!", JOptionPane.ERROR_MESSAGE);
         } else {
             JFileChooser fileChooser = new JFileChooser();
-            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivos Kok", "kok", "KOK"));//filtro para ver solo archivos Kok
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Archivos txt", "txt", "txt"));//filtro para ver solo archivos Kok
             int seleccion = fileChooser.showSaveDialog(null);
             try {
                 if (seleccion == JFileChooser.APPROVE_OPTION) {//comprueba si ha presionado el boton de aceptar
                     File JFC = fileChooser.getSelectedFile();
                     String PATH = JFC.getAbsolutePath();//obtenemos el path del archivo a guardar
                     PrintWriter printwriter = new PrintWriter(JFC);
-                    printwriter.print(editarKokTextArea.getText());//escribe en el archivo todo lo que se encuentre en el JTextArea
+                    printwriter.print(editarTextArea.getText());//escribe en el archivo todo lo que se encuentre en el JTextArea
                     printwriter.close();//cierra el archivo
                     //comprobamos si a la hora de guardar obtuvo la extension y si no se la asignamos
-                    if (!(PATH.endsWith(".kok"))) {
-                        File temp = new File(PATH + ".kok");
+                    if (!(PATH.endsWith(".txt"))) {
+                        File temp = new File(PATH + ".txt");
                         JFC.renameTo(temp);//renombramos el archivo
                     }
                     JOptionPane.showMessageDialog(null, "Guardado exitoso!", "Guardado exitoso!", JOptionPane.INFORMATION_MESSAGE);
@@ -513,7 +567,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
     }
 
     private void ImportarArchivo() {
-        editarKokTextArea.setText("");
+        editarTextArea.setText("");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Importar");
         //Aqui se filtraran los archivos por su extension. Unicamente permitiraobservar archivos txt
@@ -534,7 +588,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
                         linea = reader.readLine();
 
                     }
-                    editarKokTextArea.setText(lineaTotal);
+                    editarTextArea.setText(lineaTotal);
                     reader.close();
                 }
             } catch (FileNotFoundException ex) {
@@ -549,7 +603,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
 
     private void abrirArchivoYEjecutar() {
         manejador.resetear();
-        editarKokTextArea.setEditable(false);
+        editarTextArea.setEditable(false);
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Importar");
         //Aqui se filtraran los archivos por su extension. Unicamente permitiraobservar archivos txt
@@ -568,7 +622,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
                         lineaTotal = lineaTotal + linea + System.getProperty("line.separator");
                         linea = reader.readLine();
                     }
-                    editarKokTextArea.setText(lineaTotal);
+                    editarTextArea.setText(lineaTotal);
                     reader.close();
                 }
             } catch (FileNotFoundException ex) {
@@ -583,7 +637,7 @@ public class Principal extends javax.swing.JFrame implements Observer {
 
     public void abrirArchivoYEjecutarPath(String path) throws FileNotFoundException, IOException {
         manejador.resetear();
-        editarKokTextArea.setEditable(false);
+        editarTextArea.setEditable(false);
             FileReader f = new FileReader(path);
                 try (BufferedReader reader = new BufferedReader(f)) {
                     String lineaTotal = "";
@@ -594,9 +648,26 @@ public class Principal extends javax.swing.JFrame implements Observer {
                         lineaTotal = lineaTotal + linea + System.getProperty("line.separator");
                         linea = reader.readLine();
                     }
-                    editarKokTextArea.setText(lineaTotal);
+                    editarTextArea.setText(lineaTotal);
                     reader.close();
                 }
+    }
+    
+    public void log() throws IOException{
+        java.util.Date fecha = new Date();
+        System.out.println(fecha.toString());
+        String ruta = "/home/richard/Documentos/SeptimoSemestre/TS2/OM/log_mov_libre/"+fecha.toString();
+        File archivo = new File(ruta);
+        BufferedWriter bw;
+        if(archivo.exists()) {
+            bw = new BufferedWriter(new FileWriter(archivo));
+            bw.append(log);
+        } else {
+            bw = new BufferedWriter(new FileWriter(archivo));
+            bw.append(log);
+        }
+        bw.close();
+       
     }
 
 
@@ -609,12 +680,13 @@ public class Principal extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel areaPrincipal;
     public javax.swing.JLabel carroLabel;
     private javax.swing.JMenu edicionMenu;
-    private javax.swing.JTextArea editarKokTextArea;
+    private javax.swing.JTextArea editarTextArea;
     private javax.swing.JMenuItem guardarComoMenuItem;
     private javax.swing.JLabel instrucciones1Label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel labelMeta;
